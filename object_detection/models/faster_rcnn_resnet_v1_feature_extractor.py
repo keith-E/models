@@ -42,6 +42,7 @@ class FasterRCNNResnetV1FeatureExtractor(
                resnet_model,
                is_training,
                first_stage_features_stride,
+               num_input_channels=3,
                reuse_weights=None,
                weight_decay=0.0):
     """Constructor.
@@ -62,7 +63,7 @@ class FasterRCNNResnetV1FeatureExtractor(
     self._architecture = architecture
     self._resnet_model = resnet_model
     super(FasterRCNNResnetV1FeatureExtractor, self).__init__(
-        is_training, first_stage_features_stride, reuse_weights, weight_decay)
+        is_training, first_stage_features_stride, num_input_channels, reuse_weights, weight_decay)
 
   def preprocess(self, resized_inputs):
     """Faster R-CNN Resnet V1 preprocessing.
@@ -192,6 +193,7 @@ class FasterRCNNResnet101FeatureExtractor(FasterRCNNResnetV1FeatureExtractor):
   def __init__(self,
                is_training,
                first_stage_features_stride,
+               num_input_channels=3,
                reuse_weights=None,
                weight_decay=0.0):
     """Constructor.
@@ -208,7 +210,7 @@ class FasterRCNNResnet101FeatureExtractor(FasterRCNNResnetV1FeatureExtractor):
     """
     super(FasterRCNNResnet101FeatureExtractor, self).__init__(
         'resnet_v1_101', resnet_v1.resnet_v1_101, is_training,
-        first_stage_features_stride, reuse_weights, weight_decay)
+        first_stage_features_stride, num_input_channels, reuse_weights, weight_decay)
 
 
 class FasterRCNNResnet152FeatureExtractor(FasterRCNNResnetV1FeatureExtractor):
