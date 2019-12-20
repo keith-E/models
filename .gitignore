@@ -9,6 +9,10 @@ __pycache__/
 # VS Code Settings
 .vscode/
 
+# Model Checkpoints
+*.ckpt.*
+*.pb
+
 # Distribution / packaging
 .Python
 env/
